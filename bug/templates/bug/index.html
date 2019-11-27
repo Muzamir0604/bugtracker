@@ -1,0 +1,9 @@
+{% if latest_bug_list %}
+    <ul>
+    {% for bug in latest_bug_list %}
+        <li>{{ bug.bug_title }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No bugs</p>
+{% endif %}
