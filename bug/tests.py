@@ -1,7 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.utils import timezone
 from .models import Bug
 from django.urls import reverse
+
 # Create your tests here.
 
 
