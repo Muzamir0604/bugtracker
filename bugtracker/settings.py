@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bug.apps.BugConfig',
-    'accounts.apps.AccountsConfig'
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +130,9 @@ LOGOUT_REDIRECT_URL='home'
 # SMTP server
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+
+
+
+# Custom User
+AUTH_USER_MODEL = 'users.CustomUser'

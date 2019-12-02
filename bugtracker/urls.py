@@ -20,19 +20,19 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bug/',include('bug.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('users/', include('django.contrib.auth.urls')),
+    path('users/', include('users.urls')),
     path('', TemplateView.as_view(template_name='home.html'),name='home'),
 
 ]
 """
 'django.contrib.auth.urls' includes below:
-accounts/login/ [name='login']
-accounts/logout/ [name='logout']
-accounts/password_change/ [name='password_change']
-accounts/password_change/done/ [name='password_change_done']
-accounts/password_reset/ [name='password_reset']
-accounts/password_reset/done/ [name='password_reset_done']
-accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
-accounts/reset/done/ [name='password_reset_complete']
+users/login/ [name='login']
+users/logout/ [name='logout']
+users/password_change/ [name='password_change']
+users/password_change/done/ [name='password_change_done']
+users/password_reset/ [name='password_reset']
+users/password_reset/done/ [name='password_reset_done']
+users/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+users/reset/done/ [name='password_reset_complete']
 """
