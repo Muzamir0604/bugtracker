@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Report Bug{% endblock %}
 
 {% block content %}
-<h2>Bug Form</h2>
+<h2>Report Bug</h2>
 <form method= "post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit"></button>
 </form>
 {% endblock content%}

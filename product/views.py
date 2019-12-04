@@ -1,6 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import RawProductForm, ProductForm
-from .models import Product
+from .models import Product, Article
+from django.urls import reverse
+
+from django.views.generic import(
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    ListView,
+    DeleteView
+)
 
 # Create your views here.
 # def product_create_view(request):
@@ -37,3 +47,24 @@ def product_create_view(request):
         "form":form
     }
     return render(request,"product/product_create.html", context)
+
+def product_delete_view(request, id):
+    obj =  get_object_or_404(Product, id=id)
+    if request.method=="POST":
+        obj.delete()
+        return redirect('../../')
+    context={
+        "object":obj
+    }
+    return render(request,'product/product_delete.html',context)
+
+def product_list_view(request):
+    queryset = Product.objects.all()
+    context={
+        "object_list": queryset
+    }
+    return render(request, "product/product_list.html", context)
+
+class ArticleListView(ListView):
+    template_name="product/article_list.html"
+    queryset= Article.objects.all() # product/article_list.html

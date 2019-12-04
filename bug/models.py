@@ -31,9 +31,9 @@ class Images(models.Model):
         image = models.ImageField(upload_to=get_image_filename,
                               verbose_name='Image')
 
-class Snippet(models.Model):
-    name =  models.CharField(max_length=100)
-    body =  models.TextField()
-
-    def __str__(self):
-        return self.name
+# class Snippet(models.Model):
+#     name =  models.CharField(max_length=100)
+#     body =  models.TextField()
+#
+#     def __str__(self):
+#         return self.name
