@@ -65,6 +65,15 @@ def product_list_view(request):
     }
     return render(request, "product/product_list.html", context)
 
+def product_detail_view(request,id):
+    obj = Product.objects.get(id=2)
+    context={
+        'title': obj.title,
+        'desc':obj.description,
+        'price':obj.price
+    }
+    return render(request, "product/detail.html", context)
+
 class ArticleListView(ListView):
     template_name="product/article_list.html"
     queryset= Article.objects.all() # product/article_list.html

@@ -14,7 +14,7 @@ class Bug(models.Model):
     reported_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,null=True)
 
     def __str__(self):
-        return self.bug_description
+        return self.bug_title
 
     def was_published_recently(self):
         now = timezone.now()

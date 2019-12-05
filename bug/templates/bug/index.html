@@ -1,9 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<h3>List of Bugs</h3>
+
 {% if latest_bug_list %}
     <ul>
     {% for bug in latest_bug_list %}
-        <li>{{ bug.bug_title }}</li>
+        <li><a href="{% url 'bug:bug-detail' id=bug.id %}">{{ bug.bug_title }}</a> - reported by {{bug.reported_by}}</li>
     {% endfor %}
     </ul>
+    <p><a href="{% url 'bug:bug-form' %}">Report Bug</a></p>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
 {% else %}
     <p>No bugs</p>
 {% endif %}
+{% endblock %}

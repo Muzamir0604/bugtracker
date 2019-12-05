@@ -5,7 +5,8 @@
   {% comment %} {{ object_list }} {% endcomment %}
 
   {% for instance in object_list %}
-  <p>{{ instance.id }} - {{ instance.title }}</p>
+  <p>{{ instance.id }} -<a href="{% url 'product:product-detail' id=instance.id %}">{{ instance.title }}</a>
+    </p>
 
   {% endfor %}
 
