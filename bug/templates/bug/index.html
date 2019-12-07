@@ -1,19 +1,59 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}Index{% endblock %}
 
 {% block content %}
-<h3>List of Bugs</h3>
-
-{% if latest_bug_list %}
-    <ul>
-    {% for bug in latest_bug_list %}
-        <li><a href="{% url 'bug:bug-detail' id=bug.id %}">{{ bug.bug_title }}</a> - reported by {{bug.reported_by}}</li>
-    {% endfor %}
-    </ul>
-    <p><a href="{% url 'bug:bug-form' %}">Report Bug</a></p>
-    <p><a href="{% url 'home' %}">Back to Home</a></p>
-{% else %}
-    <p>No bugs</p>
-{% endif %}
+<link href="{% static '/bug/styles/main.css' %}" rel="stylesheet">
+<div class="container-fluid padding">
+  <div class="row padding">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+    <h3>List of Bugs</h3>
+    <!-- {% if latest_bug_list %}
+        <ul>
+        {% for bug in latest_bug_list %}
+            <li><a href="{% url 'bug:bug-detail' id=bug.id %}">{{ bug.bug_title }}</a> - reported by {{bug.reported_by}}</li>
+        {% endfor %}
+        </ul> -->
+        <table class="bug-table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">State</th>
+              <th scope="col">Reported By</th>
+              <th scope="col">Published on</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bug in latest_bug_list %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td><a href="{% url 'bug:bug-detail' id=bug.id %}">{{ bug.bug_title }}</a></td>
+              <td>{{ bug.bug_description }}</td>
+              <td>{{ bug.bug_states }}</td>
+              <td>{{bug.reported_by}}</td>
+              <td>{{bug.pub_date}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- <button type="button" class="btn btn-dark">Dark</button> -->
+        <br>
+        <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button">Report Bug</a>
+        <!-- <p><a href="{% url 'bug:bug-form' %}">Report Bug</a></p> -->
+        <br>
+        <br>
+        <a href="{% url 'home' %}" class="btn btn-info" role="button">Back to Home</a>
+        <!-- <p><a href="{% url 'home' %}">Back to Home</a></p> -->
+    {% else %}
+        <p>No bugs</p>
+    {% endif %}
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
 {% endblock %}

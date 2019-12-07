@@ -122,6 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,"static")
+]
+
 # accounts redirects
 # https://wsvincent.com/django-user-authentication-tutorial-login-and-logout/
 LOGIN_REDIRECT_URL = 'home'

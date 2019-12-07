@@ -16,7 +16,7 @@ class IndexView(generic.ListView):
         """
         Return last five of bugs
         """
-        return Bug.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Bug.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
 
 def BugFormView(request):
     # user = get_user_model()

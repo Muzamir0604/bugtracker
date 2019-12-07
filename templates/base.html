@@ -1,15 +1,96 @@
 <!-- templates/base.html -->
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="{% static 'styles/main.css' %}" rel="stylesheet">
 </head>
 <body>
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+	<div class="container-fluid">
+		<a href="{% url 'home' %}" class="navbar-brand"><img class="img-fluid" src="{% static 'img/logo.svg' %}"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id ="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Service</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Team</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Connect</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
   <main>
     {% block content %}
+
     {% endblock %}
   </main>
+  <!--- Connect -->
+  <div class="social-container container-fluid padding">
+  	<div class="row text-center padding">
+  		<div class="col-12">
+  			<h2>Connect</h2>
+  				<div class="col-12 social">
+  					<a href="#"><i class="fab fa-facebook"></i></a>
+  					<a href="#"><i class="fab fa-twitter"></i></a>
+  					<a href="#"><i class="fab fa-google-plus"></i></a>
+  					<a href="#"><i class="fab fa-instagram"></i></a>
+  					<a href="#"><i class="fab fa-youtube"></i></a>
+  				</div>
+  		</div>
+  	</div>
+  </div>
+
+  <!--- Footer -->
+  <footer>
+  	<div class="container-fluid padding">
+  		<div class="row text-center">
+  			<div class="col-md-4">
+  				<img class="bug-icon img-fluid" src="{% static 'img/bug.png' %}" alt="">
+  				<hr class="light">
+  				<p>555-555-5555</p>
+  				<p>email@ymail.com</p>
+  				<p>street name</p>
+  				<p>City state</p>
+  			</div>
+  			<div class="col-md-4">
+  				<hr class="light">
+  				<h5>Our hours</h5>
+  				<hr class="light">
+  				<p>Monday:9am to 5pm</p>
+  				<p>Saturday: 10am - 4pm</p>
+  				<p>Sunday : closed</p>
+  			</div>
+  			<div class="col-md-4">
+  				<hr class="light">
+  				<h5>Service Areas</h5>
+  				<hr class="light">
+  				<p>City state</p>
+  				<p>City state</p>
+  				<p>City state</p>
+  				<p>City state</p>
+  			</div>
+  	<div class="col-12">
+  		<hr class="light-100">
+  		<h5>&copy; bugtracker.com</h5>
+  	</div>
+  		</div>
+  	</div>
+  </footer>
+
 </body>
 </html>
 
