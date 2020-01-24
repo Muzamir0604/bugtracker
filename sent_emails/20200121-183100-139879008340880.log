@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: mu-za-mir@hotmail.com
+Date: Tue, 21 Jan 2020 18:31:00 -0000
+Message-ID: <157963146008.5300.5841184024581745768@muzamir-VirtualBox>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/users/reset/MQ/5db-703083f9e4e2a2ba7ca1/
+
+Your username, in case you've forgotten: muzamir123
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

@@ -3,10 +3,25 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
+<div class="col-sm-4">
+</div>
+<div class="container col-sm-4">
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div> {% endif %}
+    {% load widget_tweaks %}
+    {% for field in form %}
+    <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+      {{ field.errors }}
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+      {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe}}</small> {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Sign up</button>
   </form>
+  </div>
+  <div class="col-sm-4">
+  </div>
 {% endblock %}
