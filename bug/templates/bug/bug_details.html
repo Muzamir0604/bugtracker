@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="container">
-<h1>{{title}}</h1>
-<p>{{desc}}</p>
-<p>{{date}}</p>
-<p>{{user}}</p>
 
-<p><a href="{% url 'bug:index' %}">Back to List</a></p>
+{% block title %}Bug Detail{% endblock %}
+
+{% block content %}
+
+<div class="col-sm-4">
+</div>
+<div class="container-fluid col-sm-4">
+  <h2>Bug detail</h2>
+  <p>{{ bug.bug_title}}</p>
+  <p>{{bug.bug_description}}</p>
+
+  <p><a href="{% url 'bug:index'%}" class="btn btn-warning">Back</a></p>
+  <p><a href="{% url 'bug:bug-delete' pk=bug.id %}" class="btn btn-danger">Delete</a></p>
 
 </div>
-{% endblock %}
+<div class="col-sm-4">
+</div>
+{% endblock content%}

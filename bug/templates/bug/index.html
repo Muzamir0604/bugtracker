@@ -10,19 +10,13 @@
   <div class="row padding">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-    {% if latest_bug_list %}
-    <div>
-      <h3 style="float:left">List of Bugs</h3>
-      <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button" style="float:right">Report Bug</a>
-            <a href="{% url 'home' %}" class="btn btn-info" role="button" style="float:right; margin-right:1rem">Back to Home</a>
-    </div>
-    <!-- {% if latest_bug_list %}
-        <ul>
-        {% for bug in latest_bug_list %}
-            <li><a href="{% url 'bug:bug-detail' id=bug.id %}">{{ bug.bug_title }}</a> - reported by {{bug.reported_by}}</li>
-        {% endfor %}
-        </ul> -->
-        <table class="bug-table table-striped table-responsive table-hover">
+      {% if latest_bug_list %}
+          <div>
+            <h3 style="float:left">List of Bugs</h3>
+            <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button" style="float:right">Report Bug</a>
+                  <a href="{% url 'home' %}" class="btn btn-info" role="button" style="float:right; margin-right:1rem">Back to Home</a>
+          </div>
+          <table class="bug-table table-striped table-responsive table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -35,33 +29,34 @@
           </thead>
           <tbody>
             {% for bug in latest_bug_list %}
-              <tr class="table-row" data-href="{% url 'bug:bug-detail' id=bug.id %}">
-              {% comment %} <th scope="row"><a href="#" class="stretched-link">1</a></th> {% endcomment %}
+
+              <tr class="table-row" data-href="{% url 'bug:bug-detail' pk=bug.id %}">
+
               <th scope="row">{{forloop.counter}}</th>
               <td>{{ bug.bug_title }}</td>
               <td>{{ bug.bug_description }}</td>
               <td>{{ bug.bug_states }}</td>
               <td>{{bug.reported_by}}</td>
               <td>{{bug.pub_date}}</td>
-            </tr>
+              </tr>
             {% endfor %}
           </tbody>
         </table>
-        {% endif %}
-    {% else %}
-        <p>No bugs</p>
-    {% endif %}
+      {% else %}
+          <p>No bugs</p>
+      {% endif %}
+
     </div>
     <div class="col-md-3"></div>
   </div>
 </div>
 <script>
-$(document).ready(function($) {
-    $(".table-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
+  $(document).ready(function($) {
+      $(".table-row").click(function() {
+          window.document.location = $(this).data("href");
+      });
+  });
 </script>
 
 
-{% endblock %}
+{% endblock content %}

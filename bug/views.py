@@ -2,13 +2,14 @@ from django.shortcuts import render, reverse, redirect
 from django.views import generic
 from .models import Bug
 from django.utils import timezone
-
+from django.urls import reverse_lazy
 from .forms import BugForm
 # from django.contrib.auth import get_user_model
 
 
 # Create your views here.
 class IndexView(generic.ListView):
+    # model= Bug
     template_name = 'bug/index.html'
     context_object_name = 'latest_bug_list'
 
@@ -17,6 +18,15 @@ class IndexView(generic.ListView):
         Return last five of bugs
         """
         return Bug.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
+
+class DeleteBug(generic.DeleteView):
+    model = Bug
+    template_name ='bug/bug_delete.html'
+    success_url = reverse_lazy('bug:index')
+
+class DetailBug(generic.DetailView):
+    model = Bug
+    template_name = 'bug/bug_details.html'
 
 def BugFormView(request):
     # user = get_user_model()
@@ -34,15 +44,17 @@ def BugFormView(request):
     form = BugForm()
     return render(request,'bug/bug_create.html',{'form':form})
 
-def bug_detail_view(request,id):
-    obj = Bug.objects.get(id=id)
-    context={
-        'title': obj.bug_title,
-        'desc':obj.bug_description,
-        'date':obj.pub_date,
-        'user': obj.reported_by
-    }
-    return render(request, "bug/bug_details.html", context)
+# def bug_detail_view(request,id):
+#     obj = Bug.objects.get(id=id)
+#     context={
+#         'id':obj.id,
+#         'title': obj.bug_title,
+#         'desc':obj.bug_description,
+#         'date':obj.pub_date,
+#         'user': obj.reported_by
+#     }
+#     return render(request, "bug/bug_details.html", context)
+
 
 # def snippet_detail(request):
 #     if request.method=='POST':
