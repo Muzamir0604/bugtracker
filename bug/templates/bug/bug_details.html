@@ -12,6 +12,7 @@
   <p>{{ bug.bug_title}}</p>
   <p>{{bug.bug_description}}</p>
 
+    <p><a href="{% url 'bug:bug-update' pk=bug.id %}" class="btn btn-primary">Update</a></p>
   <p><a href="{% url 'bug:index'%}" class="btn btn-warning">Back</a></p>
   <p><a href="{% url 'bug:bug-delete' pk=bug.id %}" class="btn btn-danger">Delete</a></p>
 

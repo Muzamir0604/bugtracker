@@ -28,6 +28,12 @@ class DetailBug(generic.DetailView):
     model = Bug
     template_name = 'bug/bug_details.html'
 
+class UpdateBug(generic.UpdateView):
+    model=Bug
+    template_name = 'bug/bug_update.html'
+    fields = ['bug_title', 'bug_description']
+    success_url =  reverse_lazy('bug:index')
+
 def BugFormView(request):
     # user = get_user_model()
     if (request.method=='POST' and request.user.is_authenticated):
