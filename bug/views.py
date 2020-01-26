@@ -1,9 +1,11 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import generic
-from .models import Bug
+from .models import Bug, Image
 from django.utils import timezone
 from django.urls import reverse_lazy
-from .forms import BugForm
+from .forms import BugForm, ImageForm
+from django.forms import modelformset_factory
+from django.contrib import messages
 # from django.contrib.auth import get_user_model
 
 
@@ -35,39 +37,35 @@ class UpdateBug(generic.UpdateView):
     success_url =  reverse_lazy('bug:index')
 
 def BugFormView(request):
-    # user = get_user_model()
-    if (request.method=='POST' and request.user.is_authenticated):
-            form = BugForm(request.POST)
-            if form.is_valid():
-                title= form.cleaned_data['bug_title']
-                description = form.cleaned_data['bug_description']
-                pub_date =  timezone.now()
-                print(title, description, pub_date, request.user)
-                Bug.objects.create(**form.cleaned_data,pub_date=pub_date, reported_by= request.user)
-                return redirect(reverse('bug:index'))
+
+    ImageFormSet = modelformset_factory(Image,
+                                        form=ImageForm, extra=3)
+
+    if request.method == 'POST':
+
+        bugForm = BugForm(request.POST)
+        formset = ImageFormSet(request.POST, request.FILES,
+                               queryset=Image.objects.none())
 
 
-    form = BugForm()
-    return render(request,'bug/bug_create.html',{'form':form})
+        if bugForm.is_valid() and formset.is_valid():
+            bug_form = bugForm.save(commit=False)
+            bug_form.user = request.user
+            bug_form.save()
 
-# def bug_detail_view(request,id):
-#     obj = Bug.objects.get(id=id)
-#     context={
-#         'id':obj.id,
-#         'title': obj.bug_title,
-#         'desc':obj.bug_description,
-#         'date':obj.pub_date,
-#         'user': obj.reported_by
-#     }
-#     return render(request, "bug/bug_details.html", context)
+            for form in formset.cleaned_data:
+                print(form)
+                image = form.get('image')
+                photo = Image(bug=bug_form, image=image)
+                photo.save()
+            messages.success(request,
+                             "Posted!")
+            return redirect(reverse_lazy('bug:index'))
+        else:
 
-
-# def snippet_detail(request):
-#     if request.method=='POST':
-#         form = SnippetForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#
-#
-#     form = SnippetForm()
-#     return render(request,'bug/form.html',{'form':form})
+            print(bugForm.errors, formset.errors)
+    else:
+        bugForm = BugForm()
+        formset = ImageFormSet(queryset=Image.objects.none())
+    return render(request, 'bug/bug_create.html',
+                  {'bugForm': bugForm, 'formset': formset})

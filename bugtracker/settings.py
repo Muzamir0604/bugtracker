@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bug.apps.BugConfig',
     'users.apps.UsersConfig',
-    'product.apps.ProductConfig',
     'widget_tweaks',
 ]
 
@@ -142,3 +141,6 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Custom User
 AUTH_USER_MODEL = 'users.CustomUser'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

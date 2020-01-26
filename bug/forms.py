@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bug
+from .models import Bug, Image
 from django.utils import timezone
 
 class BugForm(forms.ModelForm):
@@ -18,7 +18,7 @@ class BugForm(forms.ModelForm):
                     "cols":10,
                     "label": "Description"}
             ))
-        
+
     class Meta:
         model= Bug
         fields =[
@@ -26,8 +26,8 @@ class BugForm(forms.ModelForm):
             'bug_description'
             ]
 
-# class SnippetForm(forms.ModelForm):
-#
-#     class Meta:
-#         model = Snippet
-#         fields=('name', 'body')
+class ImageForm(forms.ModelForm):
+    image =  forms.ImageField(label='Image')
+    class Meta:
+        model= Image
+        fields = ('image',)
