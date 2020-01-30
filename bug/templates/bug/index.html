@@ -9,14 +9,14 @@
 <div class="container-fluid padding">
   <div class="row padding">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6 table-responsive">
       {% if latest_bug_list %}
           <div>
             <h3 style="float:left">List of Bugs</h3>
             <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button" style="float:right">Report Bug</a>
             <a href="{% url 'home' %}" class="btn btn-info" role="button" style="float:right; margin-right:1rem">Back to Home</a>
           </div>
-          <table class="bug-table table-striped table-responsive table-hover">
+          <table class="bug-table table-striped table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>

@@ -22,15 +22,17 @@ class BugForm(forms.ModelForm):
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-md-3 create-label'
         self.helper.field_class = 'col-md-9'
+
         self.helper.layout = Layout(
             Div(
                 Field('bug_title'),
-                Field('bug_description'),
+                Field('bug_description', css_class = 'row-fluid' ),
                 Fieldset('Add Image',
                     Formset('image')),
                 # Field('note'),
                 HTML("<br>"),
                 ButtonHolder(Submit('submit', 'save')),
+                ButtonHolder(Submit('cancel', 'Cancel', css_class='btn-danger',formnovalidate='formnovalidate'))
                 )
         )
 
@@ -41,5 +43,5 @@ class ImageForm(forms.ModelForm):
         fields = ('image',)
 
 ImageFormSet = inlineformset_factory(
-    Bug, Image, form=ImageForm, fields=['image'], extra=1, can_delete=True, max_num=2, validate_max=True
+    Bug, Image, form=ImageForm, fields=['image'], extra=1, can_delete=True, max_num=3, validate_max=True
 )

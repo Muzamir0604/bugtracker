@@ -7,12 +7,20 @@ from .forms import *
 # from django.forms import modelformset_factory
 from django.contrib import messages
 from django.db import transaction
+from django.http import HttpResponseRedirect
 # from django.contrib.auth import get_user_model
 
+class FormActionMixin(object):
 
+    def post(self, request, *args, **kwargs):
+        """Add 'Cancel' button redirect."""
+        if "cancel" in request.POST:
+            return HttpResponseRedirect(reverse('bug:index'))
+        else:
+            return super(FormActionMixin, self).post(request, *args, **kwargs)
 # Create your views here.
 class IndexView(generic.ListView):
-    # model= Bug
+    model= Bug
     template_name = 'bug/index.html'
     context_object_name = 'latest_bug_list'
 
@@ -37,7 +45,7 @@ class UpdateBug(generic.UpdateView):
     fields = ['bug_title', 'bug_description']
     success_url =  reverse_lazy('bug:index')
 
-class BugCreate(generic.edit.CreateView):
+class BugCreate(FormActionMixin,generic.edit.CreateView):
     model =  Bug
     template_name = 'bug/bug_create.html'
     form_class = BugForm

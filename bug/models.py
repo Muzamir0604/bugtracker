@@ -10,7 +10,7 @@ from django.forms.models import inlineformset_factory
 
 class Bug(models.Model):
     bug_title = models.CharField(max_length=200)
-    bug_description = models.CharField(max_length=500)
+    bug_description = models.TextField(max_length=1000)
     bug_states = models.CharField(max_length=50, default="new")
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     reported_by = models.ForeignKey(get_user_model(),related_name="bugs", on_delete=models.CASCADE,null=True)
