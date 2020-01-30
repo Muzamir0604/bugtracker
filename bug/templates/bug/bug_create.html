@@ -1,49 +1,16 @@
 {% extends 'base.html' %}
-
-{% block title %}Report Bug{% endblock %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-
-<div class="col-sm-4">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Add Bug
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+             {% crispy form %}
+           </form>
+        </div>
+    </div>
 </div>
-<div class="container-fluid col-sm-4">
-  <h2>Report Bug</h2>
-  {% comment %} <form method= "post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div> {% endif %}
-      {% load widget_tweaks %}
-      {% for field in form %}
-      <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
-        {{ field.errors }}
-        {{ field.label_tag }}
-        {% render_field field class="form-control" %}
-        {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe}}</small> {% endif %}
-      </div>
-      {% endfor %}
-      <input type="submit" class="btn btn-primary"></button>
-  </form> {% endcomment %}
-  <form id="post_form" method="post" action="" enctype="multipart/form-data">
-
-    {% csrf_token %}
-    {% for hidden in bugForm.hidden_fields %}
-        {{ hidden }}
-    {% endfor %}
-
-    {% for field in bugForm %}
-        {{ field }} <br/>
-    {% endfor %}
-
-    {{ formset.management_form }}
-    {% for form in formset %}
-        {{ form }}
-    {% endfor %}
-{% comment %} https://docs.djangoproject.com/en/3.0/topics/forms/formsets/ {% endcomment %}
-
-    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-</form>
-
-  <p><a href="{% url 'bug:index'%}" class="btn btn-danger">Back</a></p>
-</div>
-<div class="col-sm-4">
-</div>
-{% endblock content%}
+{% endblock content %}

@@ -1,0 +1,12 @@
+.jumbotron {
+  background-color: #EBF4FA;
+  margin-bottom: 0rem !important;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 51rem;
+}
