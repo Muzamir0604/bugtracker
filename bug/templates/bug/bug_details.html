@@ -8,10 +8,15 @@
 
 <div class="col-sm-3">
 </div>
-<div class="container-fluid col-sm-6">
+<div class="container-fluid col-sm-6 padding">
 
   <h3 class="my-4">Bug Title:
     <small>{{ bug.bug_title}}</small>
+    <div class="float-right">
+          <a href="{% url 'bug:bug-update' pk=bug.id %}" class="btn btn-primary ">Edit</a>
+          <a href="{% url 'bug:index'%}" class="btn btn-warning">Back</a>
+          <a href="{% url 'bug:bug-delete' pk=bug.id %}" class="btn btn-danger">Delete</a>
+    <div>
   </h3>
   <div class="row">
     <div id="carouselExampleControls" class="carousel slide col-md-6" data-ride="carousel">
@@ -36,17 +41,11 @@
       </a>
     </div>
     <div class="col-md-6">
-      <div class="col-md-10">
+      <div>
         <p>You have {{bug.has_image.count}} image(s)</p>
         <h3 class="my-3">Description </h3>
         <p>{{bug.bug_description}}</p>
       </div>
-      <div class="col-md-2">
-          <span>
-            <a href="{% url 'bug:bug-update' pk=bug.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'bug:index'%}" class="btn btn-warning">Back</a>
-            <a href="{% url 'bug:bug-delete' pk=bug.id %}" class="btn btn-danger">Delete</a>
-          </span>
       </div>
     </div>
   </div>
