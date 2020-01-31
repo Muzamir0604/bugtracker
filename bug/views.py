@@ -56,10 +56,8 @@ class BugCreate(FormActionMixin,generic.edit.CreateView):
         print("retrieve context data")
         context =  super(BugCreate,self).get_context_data(**kwargs)
         if self.request.POST:
-            # context['bug'] = BugForm(self.request.POST)
             context['image'] = ImageFormSet(self.request.POST,self.request.FILES, prefix='has_image',queryset=Image.objects.none())
         else:
-            # context['bug']=BugForm()
             context['image'] = ImageFormSet()
         return context
 

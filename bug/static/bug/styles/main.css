@@ -13,3 +13,7 @@
 .padding{
   padding-top: 2rem;
 }
+.row-buttons{
+  margin:2px;
+  display: inline-block;
+}
