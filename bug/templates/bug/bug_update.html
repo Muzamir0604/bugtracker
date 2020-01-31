@@ -1,32 +1,16 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-
 <div class="container">
-  <div class="card">
-      <div class="card-header">
-          <h3>Edit Bug</h3>
-      </div>
-      <div class="card-body">
-
-  <form method ="post">
-    {% csrf_token %}
-    {% load widget_tweaks %}
-    {% for field in form %}
-    <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
-      {{ field.errors }}
-      {{ field.label_tag }}
-      {% render_field field class="form-control" %}
+    <div class="card">
+        <div class="card-header">
+            <h3>Report on a bug</h3>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+             {% crispy form %}
+           </form>
+        </div>
     </div>
-
-    {% endfor %}
-
-    <button type="submit" class = "btn btn-primary">Update</button>
-  </form>
-  <br>
-  <a href="{% url 'bug:bug-delete' bug.id %}" class="btn btn-danger"> Delete this Bug</a>
-  </div>
 </div>
-</div>
-
-{% endblock %}
+{% endblock content %}

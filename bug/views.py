@@ -39,11 +39,41 @@ class DetailBug(generic.DetailView):
     model = Bug
     template_name = 'bug/bug_details.html'
 
-class UpdateBug(generic.UpdateView):
+class UpdateBug(generic.edit.UpdateView):
     model=Bug
     template_name = 'bug/bug_update.html'
-    fields = ['bug_title', 'bug_description']
-    success_url =  reverse_lazy('bug:index')
+    form_class= BugForm
+    # fields = ['bug_title', 'bug_description', 'image']
+    # success_url =  reverse_lazy('bug:index')
+
+    def get_context_data(self, **kwargs):
+        print("retrieve context data")
+
+        context =  super(UpdateBug,self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['image'] = ImageFormSet(self.request.POST,self.request.FILES, prefix='has_image', instance=self.object)
+        else:
+            context['image'] = ImageFormSet(instance=self.object)
+        return context
+
+    def form_valid(self,form):
+        print("in form valid for update")
+        context = self.get_context_data()
+        images = context['image']
+        with transaction.atomic():
+            form.instance.reported_by =self.request.user
+            self.object =  form.save()
+            if images.is_valid():
+                images.instance = self.object
+                images.save()
+        return super(UpdateBug,self).form_valid(form)
+
+    def form_invalid(self, form):
+        print(form)
+        return super(UpdateBug,self).form_invalid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('bug:bug-detail', kwargs={'pk': self.object.pk})
 
 class BugCreate(FormActionMixin,generic.edit.CreateView):
     model =  Bug
@@ -51,7 +81,6 @@ class BugCreate(FormActionMixin,generic.edit.CreateView):
     form_class = BugForm
     success_url= None
 
-    # # TODO: add in the reported_by into bugform
     def get_context_data(self, **kwargs):
         print("retrieve context data")
         context =  super(BugCreate,self).get_context_data(**kwargs)
