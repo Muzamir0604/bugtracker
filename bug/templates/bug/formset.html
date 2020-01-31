@@ -1,6 +1,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
-
+<link href="{% static '/styles/main.css' %}" rel="stylesheet">
 <table>
 {{ formset.management_form|crispy }}
 
@@ -33,4 +33,6 @@
         deleteText: 'remove',
         prefix: '{{ formset.prefix }}',
     });
+    $(".delete-row").addClass("btn btn-danger no-margin-padding");
+    $(".add-row").addClass("btn btn-primary no-margin-padding")
 </script>

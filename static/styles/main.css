@@ -16,7 +16,11 @@ html,body{
 }
 .btn{
   margin-bottom:1rem;
+  padding-bottom: 0rem;
 }
+
+
+
 .login-jumbo{
   padding-top: 0;
 }

@@ -23,12 +23,13 @@ class BugForm(forms.ModelForm):
         self.helper.label_class = 'col-md-3 create-label'
         self.helper.field_class = 'col-md-9'
 
+
         self.helper.layout = Layout(
             Div(
                 Field('bug_title'),
                 Field('bug_description', css_class = 'row-fluid' ),
                 Fieldset('Add Image',
-                    Formset('image')),
+                    Formset('image',)),
                 # Field('note'),
                 HTML("<br>"),
                 ButtonHolder(Submit('submit', 'save')),
@@ -37,10 +38,13 @@ class BugForm(forms.ModelForm):
         )
 
 class ImageForm(forms.ModelForm):
-    image =  forms.ImageField(label='Image')
+    image =  forms.ImageField()
     class Meta:
         model= Image
         fields = ('image',)
+    def __init__(self, *args, **kwargs):
+        super(ImageForm,self).__init__(*args,**kwargs)
+        self.fields['image'].label = False
 
 ImageFormSet = inlineformset_factory(
     Bug, Image, form=ImageForm, fields=['image'], extra=1, can_delete=True, max_num=3, validate_max=True
