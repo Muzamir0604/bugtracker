@@ -8,6 +8,8 @@ from .forms import *
 from django.contrib import messages
 from django.db import transaction
 from django.http import HttpResponseRedirect
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.contrib.auth import get_user_model
 
 class FormActionMixin(object):
@@ -19,7 +21,7 @@ class FormActionMixin(object):
         else:
             return super(FormActionMixin, self).post(request, *args, **kwargs)
 # Create your views here.
-class IndexView(generic.ListView):
+class IndexView(LoginRequiredMixin,generic.ListView):
     model= Bug
     template_name = 'bug/index.html'
     context_object_name = 'latest_bug_list'
@@ -30,16 +32,16 @@ class IndexView(generic.ListView):
         """
         return Bug.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
 
-class DeleteBug(generic.DeleteView):
+class DeleteBug(LoginRequiredMixin,generic.DeleteView):
     model = Bug
     template_name ='bug/bug_delete.html'
     success_url = reverse_lazy('bug:index')
 
-class DetailBug(generic.DetailView):
+class DetailBug(LoginRequiredMixin,generic.DetailView):
     model = Bug
     template_name = 'bug/bug_details.html'
 
-class UpdateBug(generic.edit.UpdateView):
+class UpdateBug(LoginRequiredMixin,generic.edit.UpdateView):
     model=Bug
     template_name = 'bug/bug_update.html'
     form_class= BugForm
@@ -75,7 +77,7 @@ class UpdateBug(generic.edit.UpdateView):
     def get_success_url(self):
         return reverse_lazy('bug:bug-detail', kwargs={'pk': self.object.pk})
 
-class BugCreate(FormActionMixin,generic.edit.CreateView):
+class BugCreate(FormActionMixin,LoginRequiredMixin,generic.edit.CreateView):
     model =  Bug
     template_name = 'bug/bug_create.html'
     form_class = BugForm
