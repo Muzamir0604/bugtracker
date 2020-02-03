@@ -12,6 +12,7 @@ Django = "==3.0"
 pillow = "*"
 django-widget-tweaks = "*"
 django-crispy-forms = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.6"
