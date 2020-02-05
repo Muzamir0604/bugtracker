@@ -5,7 +5,10 @@ import datetime
 from django.contrib.auth import get_user_model
 from django.template.defaultfilters import slugify
 from django.forms.models import inlineformset_factory
-# Create your models here.
+
+from django.db.models.signals import post_delete
+
+
 
 
 class Bug(models.Model):

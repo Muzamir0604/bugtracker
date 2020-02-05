@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'bug.apps.BugConfig',
     'users.apps.UsersConfig',
     'widget_tweaks',
-    'crispy_forms'
+    'crispy_forms',
+    'django_cleanup',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

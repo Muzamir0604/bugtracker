@@ -13,6 +13,7 @@ pillow = "*"
 django-widget-tweaks = "*"
 django-crispy-forms = "*"
 coverage = "*"
+django-cleanup = "*"
 
 [requires]
 python_version = "3.6"
