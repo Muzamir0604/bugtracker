@@ -7,6 +7,7 @@ from django.contrib.auth.models import AnonymousUser
 from ..views import IndexView, BugCreate
 from ..forms import BugForm, ImageFormSet
 from ..models import Bug, Image
+from ..constants import STATES
 # Create your tests here.
 
 from PIL import Image as im
@@ -26,8 +27,8 @@ class BugTest(TestCase):
         self.assertIs(bug_entry.was_published_recently(),True)
 
     def test_states_default(self):
-        bug_entry = Bug(bug_title="Error404", bug_description="no image found")
-        self.assertIs(bug_entry.bug_states, "new")
+        bug_entry = Bug(bug_title="Error404", bug_description="no image found", bug_status=STATES[1])
+        self.assertIs(bug_entry.bug_status, STATES[1])
 
     def test_reported_by(self):
         self.credentials = {
@@ -41,6 +42,7 @@ class BugTest(TestCase):
         bug_entry = Bug(
             bug_title="Some issue",
             bug_description="no image found",
+            bug_status = STATES[1],
             reported_by=user)
         self.assertEqual(bug_entry.reported_by.username,"test")
 
@@ -58,7 +60,7 @@ class BugCreateTest(TestCase):
         self.bug_entry = {
         'bug_title':'test title',
         'bug_description':'test description',
-        'bug_states':'old',
+        'bug_status':STATES[1],
         'reported_by':self.user
         }
 

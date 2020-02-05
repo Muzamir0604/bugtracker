@@ -12,6 +12,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.contrib.auth import get_user_model
 
+
+
 class FormActionMixin(object):
 
     def post(self, request, *args, **kwargs):

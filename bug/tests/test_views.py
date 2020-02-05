@@ -80,9 +80,7 @@ class BugDetailTest(TestCase):
         self.user = User.objects.create_user(**self.credentials)
         self.bug_entry = {
         'bug_title':'test title',
-        'bug_description':'test description',
-        'bug_states':'old',
-        'reported_by':self.user
+        'bug_description':'test description'
         }
 
         self.bug = self.create_bug_no_image()

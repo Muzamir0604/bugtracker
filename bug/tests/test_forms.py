@@ -7,6 +7,7 @@ from django.contrib.auth.models import AnonymousUser
 from ..views import IndexView, BugCreate
 from ..forms import BugForm, ImageFormSet
 from ..models import Bug, Image
+from ..constants import STATES
 # Create your tests here.
 
 from PIL import Image as im
@@ -15,11 +16,6 @@ from io import StringIO, BytesIO
 from django.core.files.base import ContentFile
 
 # https://realpython.com/testing-in-django-part-1-best-practices-and-examples/
-
-
-
-
-
 
 class BugCreateTest(TestCase):
 
@@ -43,11 +39,16 @@ class BugCreateTest(TestCase):
         self.user = User.objects.create_user(**self.credentials)
 
     def test_valid_data_no_image(self):
+        # print(STATES[1].get('Pending'))
         form = BugForm({
             'bug_title': "title of bug",
-            'bug_description': "description of bug"
+            'bug_description': "description of bug",
+            'bug_status': 'P',
+            'reported_by':self.user
         })
+        print(form.errors)
         self.assertTrue(form.is_valid())
+        #
         bug = form.save()
         self.assertEqual(bug.bug_title, "title of bug")
         self.assertEqual(bug.bug_description, "description of bug")
@@ -57,3 +58,4 @@ class BugCreateTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertTrue('bug_title' in form.errors)
         self.assertTrue('bug_description' in form.errors)
+        self.assertTrue('bug_status' in form.errors)
