@@ -14,6 +14,7 @@
   <h3>Hi {{ user.username }}!</h3>
   <div class="col-sm text-center bug-index">
   <p class="lead text-muted">Time to take a look at those bugs</p>
+  <a href="{% url 'edit-profile' user.id %}" >edit profile</a>
   <p><a href="{% url 'bug:index' %}" class="btn btn-primary">Bug List</a></p>
 </div>
   {% comment %} <p><a href="{% url 'logout' %}" class="btn btn-danger">logout</a></p> {% endcomment %}

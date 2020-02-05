@@ -43,7 +43,7 @@ class BugCreateTest(TestCase):
         form = BugForm({
             'bug_title': "title of bug",
             'bug_description': "description of bug",
-            'bug_status': 'P',
+            'bug_status': 'Pending',
             'reported_by':self.user
         })
         print(form.errors)

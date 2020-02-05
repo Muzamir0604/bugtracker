@@ -1,6 +1,6 @@
 STATES = (
     ('', 'Choose...'),
-    ('P', 'Pending'),
-    ('C', 'Completed'),
-    ('PA', 'Pending Approval')
+    ('Pending', 'Pending'),
+    ('Completed', 'Completed'),
+    ('Pending Approval', 'Pending Approval')
 )

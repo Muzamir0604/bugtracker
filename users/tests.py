@@ -96,3 +96,32 @@ class ViewPasswordResetTest(TestCase):
             kwargs={'token':token,'uidb64':uid}),{'new_password1':'pass','new_password2':'pass'})
 
         self.assertRedirects(response, '/users/reset/MQ/set-password/', status_code=302,target_status_code=200, fetch_redirect_response=True)
+
+class ViewProfileTest(TestCase):
+    def setUp(self):
+        self.credentials = {
+        'username': 'test',
+        'password': 'test123',
+        'email':'test@gmail.com'
+        }
+        User = get_user_model()
+        self.user = User.objects.create_user(**self.credentials)
+
+    def test_render(self):
+        self.client.login(username=self.credentials['username'], password=self.credentials['password'])
+        response = self.client.get(reverse('profile',kwargs={'pk':self.user.id}))
+        self.assertEqual(response.status_code, 200)
+
+class ViewEditProfileTest(TestCase):
+    def setUp(self):
+        self.credentials = {
+        'username': 'test',
+        'password': 'test123',
+        'email':'test@gmail.com'
+        }
+        User = get_user_model()
+        self.user = User.objects.create_user(**self.credentials)
+
+    def test_render(self):
+        self.client.login(username=self.credentials['username'], password=self.credentials['password'])
+        response = self.client.get(reverse('profile',kwargs={'pk':self.user.id}))
