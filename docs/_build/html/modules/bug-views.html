@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bug Views &#8212; BugTracker 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bug Forms" href="bug-form.html" />
+    <link rel="prev" title="All About Me" href="all-about-me.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bug-views">
+<h1>Bug Views<a class="headerlink" href="#bug-views" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-bug.views.create">
+<span id="create-module"></span><h2>Create module<a class="headerlink" href="#module-bug.views.create" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bug.views.create.BugCreate">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.create.</code><code class="sig-name descname">BugCreate</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#BugCreate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.BugCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bug.views.create.FormActionMixin" title="bug.views.create.FormActionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">bug.views.create.FormActionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.CreateView</span></code></p>
+<dl class="attribute">
+<dt id="bug.views.create.BugCreate.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#bug.views.create.BugCreate.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="bug-form.html#module-bug.forms.BugForm" title="bug.forms.BugForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">bug.forms.BugForm</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.create.BugCreate.form_invalid">
+<code class="sig-name descname">form_invalid</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#BugCreate.form_invalid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.BugCreate.form_invalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the form is invalid, render the invalid form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.create.BugCreate.form_valid">
+<code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#BugCreate.form_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.BugCreate.form_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.create.BugCreate.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#BugCreate.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.BugCreate.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.create.BugCreate.get_success_url">
+<code class="sig-name descname">get_success_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#BugCreate.get_success_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.BugCreate.get_success_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the URL to redirect to after processing a valid form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.create.BugCreate.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#bug.views.create.BugCreate.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bug.models.Bug</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.create.BugCreate.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = None</em><a class="headerlink" href="#bug.views.create.BugCreate.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.create.BugCreate.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'bug/bug_create.html'</em><a class="headerlink" href="#bug.views.create.BugCreate.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bug.views.create.FormActionMixin">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.create.</code><code class="sig-name descname">FormActionMixin</code><a class="reference internal" href="../_modules/bug/views/create.html#FormActionMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.FormActionMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="bug.views.create.FormActionMixin.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/create.html#FormActionMixin.post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.create.FormActionMixin.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add ‘Cancel’ button redirect.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bug.views.delete">
+<span id="delete-module"></span><h2>Delete module<a class="headerlink" href="#module-bug.views.delete" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bug.views.delete.DeleteBug">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.delete.</code><code class="sig-name descname">DeleteBug</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/delete.html#DeleteBug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.delete.DeleteBug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.DeleteView</span></code></p>
+<dl class="attribute">
+<dt id="bug.views.delete.DeleteBug.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#bug.views.delete.DeleteBug.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bug.models.Bug</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.delete.DeleteBug.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = '/bug/'</em><a class="headerlink" href="#bug.views.delete.DeleteBug.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.delete.DeleteBug.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'bug/bug_delete.html'</em><a class="headerlink" href="#bug.views.delete.DeleteBug.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bug.views.detail">
+<span id="detail-module"></span><h2>Detail module<a class="headerlink" href="#module-bug.views.detail" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bug.views.detail.DetailBug">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.detail.</code><code class="sig-name descname">DetailBug</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/detail.html#DetailBug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.detail.DetailBug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.detail.DetailView</span></code></p>
+<dl class="attribute">
+<dt id="bug.views.detail.DetailBug.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#bug.views.detail.DetailBug.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bug.models.Bug</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.detail.DetailBug.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'bug/bug_details.html'</em><a class="headerlink" href="#bug.views.detail.DetailBug.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bug.views.index">
+<span id="index-module"></span><h2>Index module<a class="headerlink" href="#module-bug.views.index" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bug.views.index.IndexView">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.index.</code><code class="sig-name descname">IndexView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/index.html#IndexView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.index.IndexView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<dl class="attribute">
+<dt id="bug.views.index.IndexView.context_object_name">
+<code class="sig-name descname">context_object_name</code><em class="property"> = 'latest_bug_list'</em><a class="headerlink" href="#bug.views.index.IndexView.context_object_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bug.views.index.IndexView.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/index.html#IndexView.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.index.IndexView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last five of bugs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.index.IndexView.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#bug.views.index.IndexView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bug.models.Bug</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.index.IndexView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'bug/index.html'</em><a class="headerlink" href="#bug.views.index.IndexView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bug.views.update">
+<span id="update-module"></span><h2>Update module<a class="headerlink" href="#module-bug.views.update" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bug.views.update.UpdateBug">
+<em class="property">class </em><code class="sig-prename descclassname">bug.views.update.</code><code class="sig-name descname">UpdateBug</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/update.html#UpdateBug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.update.UpdateBug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.mixins.LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.edit.UpdateView</span></code></p>
+<dl class="attribute">
+<dt id="bug.views.update.UpdateBug.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#bug.views.update.UpdateBug.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="bug-form.html#module-bug.forms.BugForm" title="bug.forms.BugForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">bug.forms.BugForm</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.update.UpdateBug.form_invalid">
+<code class="sig-name descname">form_invalid</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/update.html#UpdateBug.form_invalid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.update.UpdateBug.form_invalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the form is invalid, render the invalid form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.update.UpdateBug.form_valid">
+<code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/update.html#UpdateBug.form_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.update.UpdateBug.form_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.update.UpdateBug.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/update.html#UpdateBug.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.update.UpdateBug.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bug.views.update.UpdateBug.get_success_url">
+<code class="sig-name descname">get_success_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bug/views/update.html#UpdateBug.get_success_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bug.views.update.UpdateBug.get_success_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the URL to redirect to after processing a valid form.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.update.UpdateBug.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#bug.views.update.UpdateBug.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bug.models.Bug</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bug.views.update.UpdateBug.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'bug/bug_update.html'</em><a class="headerlink" href="#bug.views.update.UpdateBug.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">BugTracker</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">All About Me</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bug Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-bug.views.create">Create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bug.views.delete">Delete module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bug.views.detail">Detail module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bug.views.index">Index module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bug.views.update">Update module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bug-form.html">Bug Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users-form.html">User Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users-view.html">User views</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="all-about-me.html" title="previous chapter">All About Me</a></li>
+      <li>Next: <a href="bug-form.html" title="next chapter">Bug Forms</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Muhammad Muzamir.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/modules/bug-views.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

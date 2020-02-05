@@ -1,11 +1,9 @@
 from django.db import models
 from django.utils import timezone
 import datetime
-# from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.template.defaultfilters import slugify
 from django.forms.models import inlineformset_factory
-
 from django.db.models.signals import post_delete
 
 
