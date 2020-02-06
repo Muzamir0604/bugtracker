@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'django_cleanup',
+    'phonenumber_field',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

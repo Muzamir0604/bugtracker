@@ -37,6 +37,7 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				<a class="dropdown-item" href="{% url 'profile' user.id %}">My Profile</a>
+				<a class="dropdown-item" href="{% url 'edit-profile' user.id %}" >Edit Profile</a>
 				<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
 
 				</div>

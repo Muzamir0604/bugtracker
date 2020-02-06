@@ -29,7 +29,6 @@ class DetailProfile(generic.DetailView):
 class EditProfile(generic.edit.UpdateView):
 
     form_class= CustomUserChangeForm
-    # success_url = reverse_lazy('home')
     template_name = 'edit_profile.html'
     model = User
     #

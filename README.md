@@ -2,9 +2,7 @@
 
 BugTracker is Django Application for tracking bugs.
 
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Link to website
 
 ```bash
 <To be included>
@@ -19,10 +17,24 @@ print report on terminal
 coverage report
 ```
 
+```python
+<to be included>
+```
+
+## View Documentation
+```bash
+coverage run --include='./*' manage.py test
+```
+print report on terminal
+```bash
+coverage report
+```
 
 ```python
 <to be included>
 ```
+
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

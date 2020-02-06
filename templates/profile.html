@@ -6,11 +6,24 @@
 <div class="col-sm-4">
 </div>
 <div class="container col-sm-4">
-  <h2>Profile</h2>
+  <h2>{{user.username|title}}'s Profile</h2>
   <div class="card">
-    <h3>{{ user.username }}</h3>
-    <h3>{{ user.email }}</h3>
-    <h3>{{ user.address }}</h3>
+    <div><b>Username:</b> {{ user.username|title }}</div>
+    <div class="row">
+      <div class="col-md-6"><p><b>First Name:</b> {{ user.first_name|title }}</p></div>
+      <div class="col-md-6"><b>Last Name:</b> {{ user.last_name|title }}</div>
+    </div>
+    <div><p><b>Email:</b> {{ user.email }}</p></div>
+    <div class="row">
+      <div class="col-md-6"><b>Address:</b>{{ user.address|title }}</div>
+      <div class="col-md-6">
+        <b>Postal Code:</b>{% if user.postal == 0 %}
+        Not declared
+        {% else %}
+        {{ user.postal }}
+        {% endif %}
+      </div>
+    </div>
     <a class="btn btn-primary" href="{% url 'edit-profile' user.id %}">Edit</a>
   </div>
   <div class="col-sm-4">
