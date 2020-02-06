@@ -13,3 +13,6 @@
 .padding{
   padding-top: 2rem;
 }
+.foto:hover {
+    transform: scale(1.5);
+}

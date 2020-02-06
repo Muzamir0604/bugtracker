@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-<link href="{% static '/bug/styles/main.css' %}" rel="stylesheet">
+<link href="{% static '/styles/main.css' %}" rel="stylesheet">
 
 {% block title %}Bug Detail{% endblock %}
 
@@ -19,7 +19,7 @@
     <div>
   </h3>
   <div class="row">
-    <div id="carouselExampleControls" class="carousel slide col-md-6" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide col-md-6" interval=False>
       <div class="carousel-inner">
         {% for image in bug.has_image.all %}
         {% if forloop.first %}
@@ -27,7 +27,7 @@
         {% else %}
         <div class="carousel-item">
         {% endif %}
-          <img class="d-block w-100" src={{image.image.url}} alt="First slide">
+          <img id="foto" class="d-block w-100" src={{image.image.url}} alt="First slide">
         </div>
         {% endfor %}
       </div>
@@ -52,4 +52,37 @@
 </div>
 <div class="col-sm-3">
 </div>
+<script src="{% static 'libraries/zoomsl.min.js' %}">
+</script>
+{% comment %} https://github.com/mtvphnx/zoomsl {% endcomment %}
+<script>
+document.addEventListener("keyup",function(e){
+   var key = e.which||e.keyCode;
+   switch(key){
+      //left arrow
+      case 37:
+         document.getElementByClassName("carousel-control-prev").click();
+      break;
+      //right arrow
+      case 39:
+         document.getElementByClassName("carousel-control-next").click();
+      break;
+   }
+});
+
+jQuery(function() {
+      $('img').imagezoomsl({
+        zoomrange:[1,10],
+        magnifiersize:[690,450],
+        scrollspeedanimate: 10,
+        loopspeedanimate: 5,
+        // cursorshadeborder: '10px solid #000',
+        magnifiereffectanimate: 'fadein',
+        magnifierpos:'right'
+      });
+});
+
+
+</script>
+
 {% endblock content%}

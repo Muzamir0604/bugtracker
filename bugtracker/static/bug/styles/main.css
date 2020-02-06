@@ -5,6 +5,7 @@
 }
 .bug-table{
   width:100%;
+  padding-right: 0;
 }
 .h3{
   font-size: 22px;

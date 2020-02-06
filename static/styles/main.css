@@ -35,8 +35,9 @@ html,body{
   height: 20px;
   width:20px;
 }
-
-
+.foto:hover {
+    transform: scale(1.5);
+}
 
 
 

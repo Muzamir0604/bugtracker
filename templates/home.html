@@ -11,7 +11,7 @@
 
     </div>
 {% if user.is_authenticated %}
-  <h3>Hi {{ user.username }}!</h3>
+  <h3>Hi {{ user.username|title }}!</h3>
   <div class="col-sm text-center bug-index">
   <p class="lead text-muted">Time to take a look at those bugs</p>
   <p><a href="{% url 'bug:index' %}" class="btn btn-primary">Bug List</a></p>
