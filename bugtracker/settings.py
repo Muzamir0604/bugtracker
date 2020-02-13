@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup',
     'phonenumber_field',
+    'rules',
 ]
+AUTHENTICATION_BACKENDS = (
+    'rules.permissions.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html

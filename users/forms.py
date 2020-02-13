@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Fieldset, Div, HTML, ButtonHolder, Submit
-
+from django.contrib.auth.admin import UserAdmin
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -20,7 +20,7 @@ class CustomUserChangeForm(UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomUserChangeForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password')
+        del self.fields['password']
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = 'form-horizontal'
@@ -42,3 +42,14 @@ class CustomUserChangeForm(UserChangeForm):
                 ButtonHolder(Submit('cancel', 'Cancel', css_class='btn-danger',formnovalidate='formnovalidate'))
                 )
         )
+
+class CustomUserCreateAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    prepopulated_fields = {'username':('first_name','last_name',)}
+
+    add_fieldsets=(
+     (None, {
+            'classes': ('wide',),
+            'fields': ('first_name', 'last_name', 'username', 'password1', 'password2', ),
+        }),
+    )
