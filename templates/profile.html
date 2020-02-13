@@ -13,7 +13,10 @@
       <div class="col-md-6"><p><b>First Name:</b> {{ user.first_name|title }}</p></div>
       <div class="col-md-6"><b>Last Name:</b> {{ user.last_name|title }}</div>
     </div>
-    <div><p><b>Email:</b> {{ user.email }}</p></div>
+    <div class="row">
+      <div class="col-md-6"><p><b>Email</b> {{ user.email }}</p></div>
+      <div class="col-md-6"><b>Group</b> {{ user.groups.all.0 }}</div>
+    </div>
     <div class="row">
       <div class="col-md-6"><b>Address:</b>{{ user.address|title }}</div>
       <div class="col-md-6">

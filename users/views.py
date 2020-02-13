@@ -7,6 +7,8 @@ from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 
 User = get_user_model()
 
@@ -18,7 +20,9 @@ class SignUp(generic.CreateView):
     def form_valid(self, form):
         view =  super(SignUp, self).form_valid(form)
         username, password = form.cleaned_data.get('username'), form.cleaned_data.get('password1')
+        group_name = form.cleaned_data.get('group')
         user = authenticate(username=username, password=password)
+        user.groups.add(get_object_or_404(Group,name=group_name))
         login(self.request, user)
         return view
 

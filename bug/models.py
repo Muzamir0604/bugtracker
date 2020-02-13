@@ -12,7 +12,7 @@ from django.db.models.signals import post_delete
 class Bug(models.Model):
     bug_title = models.CharField(max_length=200)
     bug_description = models.TextField(max_length=1000)
-    bug_status = models.CharField(max_length=50, default="new")
+    bug_status = models.CharField(max_length=50, default="Pending")
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     reported_by = models.ForeignKey(get_user_model(),related_name="bugs", on_delete=models.CASCADE,null=True)
 

@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator
 class CustomUser(AbstractUser):
     # pass
     # add additional fields here
+    # groups =  models.CharField(max_length=50, default="Developer")
     address = models.CharField(max_length=500, blank=True)
     postal = models.PositiveIntegerField(default=0,blank=True,validators=[MaxValueValidator(1000)])
     contact = PhoneNumberField(blank=True)

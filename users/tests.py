@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.test import override_settings
 from .forms import CustomUserCreationForm
 from django.utils.html import escape
+from .constants import GROUPS
 # Create your tests here.
 
 # https://django-inspectional-registration.readthedocs.io/en/latest/_modules/registration/tests/test_views.html
@@ -36,6 +37,7 @@ class ViewSignUpTest(TestCase):
         self.assertEqual(response.status_code,200)
         self.failUnless(isinstance(response.context['form'],CustomUserCreationForm))
 
+    ## TODO: signupTestcase post_success with choicefield to be added
     def test_view_post_success(self):
         response = self.client.post(reverse('signup'), data={'username':'test','email':'test@gmail.com','password1':'terribleidea','password2':'terribleidea'})
         self.assertRedirects(response,reverse('home'), status_code=302, target_status_code=200, fetch_redirect_response=True)
@@ -46,6 +48,7 @@ class ViewSignUpTest(TestCase):
 
         response = self.client.post(reverse('signup'),
                                     data={'username': 'bob','email':'bob@gmail.com',
+                                    'group':GROUPS[1],
                                     'password1':'password1',
                                     'password2':'password2'})
         self.assertEqual(response.status_code, 200)

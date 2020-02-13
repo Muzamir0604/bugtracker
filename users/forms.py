@@ -5,12 +5,13 @@ from .models import CustomUser
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Fieldset, Div, HTML, ButtonHolder, Submit
 from django.contrib.auth.admin import UserAdmin
+from .constants import GROUPS
 
 class CustomUserCreationForm(UserCreationForm):
-
+    group = forms.ChoiceField(choices=GROUPS)
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'group')
 
 class CustomUserChangeForm(UserChangeForm):
 
