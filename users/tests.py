@@ -6,9 +6,12 @@ from django.urls import reverse
 from django.test import override_settings
 from .forms import CustomUserCreationForm
 from django.utils.html import escape
-from .constants import GROUPS
+from .forms import CustomUserCreationForm
+# from .constants import GROUPS
+# from django.contrib.auth.models import Group
+# from django.shortcuts import get_object_or_404
 # Create your tests here.
-
+# from .forms import get_group_choices
 # https://django-inspectional-registration.readthedocs.io/en/latest/_modules/registration/tests/test_views.html
 
 class LogInTest(TestCase):
@@ -37,25 +40,43 @@ class ViewSignUpTest(TestCase):
         self.assertEqual(response.status_code,200)
         self.failUnless(isinstance(response.context['form'],CustomUserCreationForm))
 
-    ## TODO: signupTestcase post_success with choicefield to be added
-    def test_view_post_success(self):
-        response = self.client.post(reverse('signup'), data={'username':'test','email':'test@gmail.com','password1':'terribleidea','password2':'terribleidea'})
-        self.assertRedirects(response,reverse('home'), status_code=302, target_status_code=200, fetch_redirect_response=True)
-        user = get_user_model()
-        self.assertEqual(user.objects.count(),1)
+    def test_form_post_success(self):
+        form = CustomUserCreationForm({
+            'username': 'test',
+            'email': 'test@gmail.com',
+            'group': 'Analysts',
+            'password1':'terribleidea',
+            'password2':'terribleidea',
+        })
+        # print(form.errors)
+        self.assertTrue(form.is_valid())
+        user_form = form.save()
+        User = get_user_model()
+        user = User.objects.get(username='test')
+        self.assertEqual(user.email,'test@gmail.com')
 
-    def test_view_post_failure(self):
 
-        response = self.client.post(reverse('signup'),
-                                    data={'username': 'bob','email':'bob@gmail.com',
-                                    'group':GROUPS[1],
-                                    'password1':'password1',
-                                    'password2':'password2'})
-        self.assertEqual(response.status_code, 200)
-        self.failIf(response.context['form'].is_valid())
-        expected_error = escape("The two password fields didn't match.")
-        ## TODO: create a detection for expectod error
-        print(response.context['form'].non_field_errors())
+    def test_form_post_failure(self):
+        form = CustomUserCreationForm({
+            'username': 'test',
+            'email': 'test@gmail.com',
+            'group': 'Analysts',
+            'password1':'terribleidea1',
+            'password2':'terribleidea',
+        })
+        self.assertFalse(form.is_valid())
+        User = get_user_model()
+        self.assertEqual(User.objects.count(),0)
+        # response = self.client.post(reverse('signup'),
+        #                             data={'username': 'bob','email':'bob@gmail.com',
+        #                             'group':GROUPS[1],
+        #                             'password1':'password1',
+        #                             'password2':'password2'})
+        # self.assertEqual(response.status_code, 200)
+        # self.failIf(response.context['form'].is_valid())
+        # expected_error = escape("The two password fields didn't match.")
+        # ## TODO: create a detection for expectod error
+        # print(response.context['form'].non_field_errors())
         # self.assertContains(response.context['form'].error_messages, expected_error)
         # self.assertContains(response.context['form'].non_field_errors(),expected_error)
         # self.assertFormError(response, 'form', field=response.context['form'].non_field_errors,errors=expected_error)

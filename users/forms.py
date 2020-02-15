@@ -7,6 +7,7 @@ from crispy_forms.layout import Layout, Field, Fieldset, Div, HTML, ButtonHolder
 from django.contrib.auth.admin import UserAdmin
 from .constants import GROUPS
 
+
 class CustomUserCreationForm(UserCreationForm):
     group = forms.ChoiceField(choices=GROUPS)
     class Meta:
