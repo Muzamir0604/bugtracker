@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup',
     'phonenumber_field',
-    'rules',
+    'rules.apps.AutodiscoverRulesConfig',
+    # 'rules',
 ]
 AUTHENTICATION_BACKENDS = (
     'rules.permissions.ObjectPermissionBackend',

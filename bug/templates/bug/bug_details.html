@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load rules %}
+
 <link href="{% static '/styles/main.css' %}" rel="stylesheet">
 
 {% block title %}Bug Detail{% endblock %}
@@ -13,9 +15,15 @@
   <h3 class="my-4">Bug Title:
     <small>{{ bug.bug_title}}</small>
     <div class="float-right">
+      {% has_perm 'bug.change_bug' user bug as can_edit_bug%}
+      {% if can_edit_bug %}
           <a href="{% url 'bug:bug-update' pk=bug.id %}" class="btn btn-primary ">Edit</a>
+      {% endif %}
           <a href="{% url 'bug:index'%}" class="btn btn-warning">Back</a>
+      {% has_perm 'bug.delete_bug' user bug as can_delete_bug%}
+      {% if can_delete_bug %}
           <a href="{% url 'bug:bug-delete' pk=bug.id %}" class="btn btn-danger">Delete</a>
+      {% endif %}
     <div>
   </h3>
   <div class="row">

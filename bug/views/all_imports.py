@@ -10,6 +10,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rules.contrib.views import PermissionRequiredMixin
 # from django.contrib.auth import get_user_model
 
 

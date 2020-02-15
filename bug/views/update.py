@@ -1,9 +1,10 @@
 from .all_imports import *
 
-class UpdateBug(LoginRequiredMixin,generic.edit.UpdateView):
+class UpdateBug(PermissionRequiredMixin,LoginRequiredMixin,generic.edit.UpdateView):
     model=Bug
     template_name = 'bug/bug_update.html'
     form_class= BugForm
+    permission_required = 'bug.change_bug'
 
     # fields = ['bug_title', 'bug_description', 'image']
     # success_url =  reverse_lazy('bug:index')
