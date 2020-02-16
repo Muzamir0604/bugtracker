@@ -33,3 +33,14 @@ class Image(models.Model):
         bug= models.ForeignKey(Bug, default=None, related_name="has_image", on_delete = models.CASCADE)
         image = models.ImageField(upload_to=get_image_filename,
                               verbose_name='Image')
+
+class Team(models.Model):
+    bug = models.ForeignKey(Bug, related_name="has_team", on_delete = models.CASCADE)
+    members = models.ForeignKey(get_user_model(),related_name ="member",on_delete = models.CASCADE)
+    assigned_by = models.ForeignKey(get_user_model(),related_name="assigner",on_delete = models.CASCADE)
+
+class Request(models.Model):
+    owner = models.ForeignKey(get_user_model(),related_name ="owner", on_delete = models.CASCADE)
+    bug = models.ForeignKey(Bug, on_delete= models.CASCADE)
+    type = models.CharField(max_length=50, default=None)
+    receiver = models.ForeignKey(get_user_model(),related_name="receiver", on_delete=models.CASCADE)
