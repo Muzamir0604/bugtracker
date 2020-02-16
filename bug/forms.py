@@ -16,7 +16,8 @@ class BugForm(forms.ModelForm):
         model= Bug
         exclude =[
             'pub_date',
-            'reported_by'
+            'reported_by',
+            'update_date',
             ]
     def __init__(self, *args, **kwargs):
         super(BugForm,self).__init__(*args,**kwargs)
