@@ -13,15 +13,26 @@ class Bug(models.Model):
     bug_title = models.CharField(max_length=200)
     bug_description = models.TextField(max_length=1000)
     bug_status = models.CharField(max_length=50, default="Pending")
-    pub_date = models.DateTimeField('date published', auto_now_add=True)
+    pub_date = models.DateTimeField('date published', editable=False)
+    update_date = models.DateTimeField('date updated')
     reported_by = models.ForeignKey(get_user_model(),related_name="bugs", on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return self.bug_title
 
+    def save(self,*args,**kwargs):
+        if not self.id:
+            self.pub_date = timezone.now()
+        self.update_date = timezone.now()
+        return super(Bug, self).save(*args, **kwargs)
+
     def was_published_recently(self):
         now = timezone.now()
         return now-datetime.timedelta(days=1) <= self.pub_date <= now
+    def get_pub_date(self):
+        return self.pub_date.date()
+    def get_update_date(self):
+        return self.update_date.date()
 
 def get_image_filename(instance, filename):
     title = instance.bug.bug_title
@@ -42,5 +53,5 @@ class Team(models.Model):
 class Request(models.Model):
     owner = models.ForeignKey(get_user_model(),related_name ="owner", on_delete = models.CASCADE)
     bug = models.ForeignKey(Bug, on_delete= models.CASCADE)
-    type = models.CharField(max_length=50, default=None)
+    type = models.CharField(max_length=50, default=None) # can be pendingReview, Assignment,Request for more data
     receiver = models.ForeignKey(get_user_model(),related_name="receiver", on_delete=models.CASCADE)

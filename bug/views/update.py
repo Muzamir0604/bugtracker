@@ -10,7 +10,7 @@ class UpdateBug(PermissionRequiredMixin,LoginRequiredMixin,generic.edit.UpdateVi
     # success_url =  reverse_lazy('bug:index')
 
     def get_context_data(self, **kwargs):
-        print("retrieve context data")
+        # print("retrieve context data")
 
         context =  super(UpdateBug,self).get_context_data(**kwargs)
         if self.request.POST:
