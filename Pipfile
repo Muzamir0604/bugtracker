@@ -19,6 +19,9 @@ psycopg2-binary = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
 rules = "*"
+gunicorn = "*"
+whitenoise = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.6"
