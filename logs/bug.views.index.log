@@ -39,3 +39,8 @@
 2020-02-17 11:36:30,430:DEBUG:index.py:Other objects returned
 2020-02-17 11:36:30,435:DEBUG:predicates.py:Testing is_group_member:Analysts
 2020-02-17 11:36:30,436:DEBUG:predicates.py:  is_group_member:Analysts = True
+2020-02-17 12:20:55,382:DEBUG:index.py:Index - LogIn Success
+2020-02-17 12:20:57,336:DEBUG:index.py: current user: test & group: Analysts
+2020-02-17 12:20:57,337:DEBUG:index.py:Other objects returned
+2020-02-17 12:20:57,341:DEBUG:predicates.py:Testing is_group_member:Analysts
+2020-02-17 12:20:57,342:DEBUG:predicates.py:  is_group_member:Analysts = True
