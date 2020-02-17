@@ -19,8 +19,11 @@ psycopg2-binary = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
 rules = "*"
+<<<<<<< HEAD
 gunicorn = "*"
 whitenoise = "*"
+=======
+>>>>>>> dev
 dj-database-url = "*"
 
 [requires]
