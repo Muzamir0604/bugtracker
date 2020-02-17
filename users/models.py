@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MaxValueValidator
+from django.contrib.auth.models import Group
 
 # Create your models here.
 # https://thecodinginterface.com/blog/django-auth-part1/    -- useful tips here

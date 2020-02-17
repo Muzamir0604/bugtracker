@@ -17,12 +17,13 @@ is_developer = rules.is_group_member('Developers')
 rules.add_rule('can_read_bug', is_reporter & is_analyst | is_supervisor)
 rules.add_rule('can_change_bug', is_reporter & is_analyst | is_supervisor)
 rules.add_rule('can_delete_bug', is_reporter | is_supervisor )
-rules.add_rule('can_add_bug', is_reporter)
+rules.add_rule('can_add_bug', is_analyst)
 
 # permissions
 rules.add_perm('bug.read_bug', is_reporter & is_analyst | is_supervisor)
 rules.add_perm('bug.change_bug', is_reporter & is_analyst | is_supervisor)
 rules.add_perm('bug.delete_bug', is_reporter | is_supervisor)
+rules.add_perm('bug.add_bug', is_analyst)
 
 
 

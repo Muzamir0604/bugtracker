@@ -44,7 +44,8 @@ class BugCreateTest(TestCase):
             'bug_title': "title of bug",
             'bug_description': "description of bug",
             'bug_status': 'Pending',
-            'reported_by':self.user
+            'reported_by':self.user,
+            'severity':'Low'
         })
         # print(form.errors)
         self.assertTrue(form.is_valid())
