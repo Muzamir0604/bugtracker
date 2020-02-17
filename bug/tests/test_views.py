@@ -2,7 +2,8 @@ from django.test import TestCase, Client, RequestFactory
 from django.utils import timezone
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model, authenticate
-from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.models import AnonymousUser, Group
+from django.shortcuts import get_object_or_404
 
 from ..views import IndexView, BugCreate, DetailBug
 from ..forms import BugForm, ImageFormSet
@@ -11,6 +12,7 @@ from ..models import Bug, Image
 
 from PIL import Image as im
 from io import StringIO, BytesIO
+
 
 from django.core.files.base import ContentFile
 
@@ -25,6 +27,13 @@ class BugIndexTest(TestCase):
         }
         User = get_user_model()
         self.user = User.objects.create_user(**self.credentials)
+        # create group because could not be accessed from db
+        Group.objects.create(name='Analysts')
+        self.group = Group.objects.get(name="Analysts")
+        # print(self.group
+        self.user.groups.add(self.group)
+
+
         self.client.login(username=self.credentials['username'], password=self.credentials['password'])
         response = self.client.get(reverse('bug:index'))
         self.assertEqual(response.status_code,200)

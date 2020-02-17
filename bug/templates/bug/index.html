@@ -8,17 +8,21 @@
 <link href="{% static '/bug/styles/main.css' %}" rel="stylesheet">
 <div class="container-fluid padding">
   <div class="row padding">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 table-responsive">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 table-responsive">
       <div>
 
         <h3 style="float:left">List of Bugs</h3>
-
-        <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button" style="float:right">Report Bug</a>
+        {% has_perm 'bug.add_bug' user bug as can_add_bug%}
+        {% if can_add_bug %}
+          <a href="{% url 'bug:bug-form' %}" class="btn btn-dark" role="button" style="float:right">Report Bug</a>
+        {% endif %}
         <a href="{% url 'home' %}" class="btn btn-info" role="button" style="float:right; margin-right:1rem">Back to Home</a>
-        <p  style="float:right; margin-right:1rem">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </p>
+        {% if latest_bug_list %}
+          <p  style="float:right; margin-right:1rem">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </p>
+        {% endif %}
       </div>
       {% if latest_bug_list %}
 
@@ -51,35 +55,39 @@
             {% endfor %}
           </tbody>
         </table>
+        <nav style="float:right" aria-label="page navigation">
+          <ul class="pagination">
+              {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1" aria-label="First">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">First</span>
+                </a>
+              </li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+              {% endif %}
+              {% for page_num in page_obj.paginator.page_range %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{page_num}}</a></li>
+              {% endfor %}
+              {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><span class="sr-only">Last</span> <span aria-hidden="true">&raquo;</span></a></li>
+              {% endif %}
+          </ul>
+          <p  style="float:right; margin-right:1rem">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </p>
+        </nav>
       {% else %}
-      <div class="container">
-          <p>No bugs</p>
+      <div class="row container">
+          <p>No bugs reported</p>
       </div>
       {% endif %}
-      <nav style="float:right" aria-label="page navigation">
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-              <li class="page-item"><a class="page-link" href="?page=1" aria-label="First">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">First</span>
-              </a>
-            </li>
-              <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
 
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><span class="sr-only">Last</span> <span aria-hidden="true">&raquo;</span></a></li>
-            {% endif %}
-        </ul>
-        <p  style="float:right; margin-right:1rem">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </p>
-      </nav>
       </div>
     </div>
 
-    <div class="col-md-3"></div>
+    <div class="col-md-2"></div>
   </div>
 <script>
   $(document).ready(function($) {

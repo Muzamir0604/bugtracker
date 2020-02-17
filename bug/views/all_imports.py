@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import generic
-from ..models import Bug, Image
+from ..models import Bug, Image, Team
 from django.utils import timezone
 from django.urls import reverse_lazy
 from ..forms import *
@@ -11,6 +11,8 @@ from django.http import HttpResponseRedirect
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rules.contrib.views import PermissionRequiredMixin
+import logging
+
 # from django.contrib.auth import get_user_model
 
 

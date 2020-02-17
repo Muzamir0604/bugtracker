@@ -18,6 +18,7 @@ class BugForm(forms.ModelForm):
             'pub_date',
             'reported_by',
             'update_date',
+            'supervisor',
             ]
     def __init__(self, *args, **kwargs):
         super(BugForm,self).__init__(*args,**kwargs)

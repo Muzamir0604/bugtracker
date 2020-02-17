@@ -9,7 +9,8 @@ urlpatterns = [
     path('form/', views.BugCreate.as_view(), name = "bug-form"),
     path('<int:pk>/detail', views.DetailBug.as_view(), name='bug-detail'),
     path('<int:pk>/delete', views.DeleteBug.as_view(), name='bug-delete'),
-    path('<int:pk>/update', views.UpdateBug.as_view(), name='bug-update')
+    path('<int:pk>/update', views.UpdateBug.as_view(), name='bug-update'),
+    # path('<int:pk>/assign', views.AssignBug.as_view(), name='bug-assign'),
     # path('snippet/', views.snippet_detail),
 
 ]
