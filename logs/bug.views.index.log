@@ -39,3 +39,15 @@
 2020-02-17 11:36:30,430:DEBUG:index.py:Other objects returned
 2020-02-17 11:36:30,435:DEBUG:predicates.py:Testing is_group_member:Analysts
 2020-02-17 11:36:30,436:DEBUG:predicates.py:  is_group_member:Analysts = True
+2020-02-17 13:18:43,143:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:19:24,847:INFO:autoreload.py:/home/muzamir/Desktop/portfolio/bugtracker/bugtracker/settings.py changed, reloading.
+2020-02-17 13:19:25,632:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:20:14,307:INFO:autoreload.py:/home/muzamir/Desktop/portfolio/bugtracker/bugtracker/settings.py changed, reloading.
+2020-02-17 13:20:15,121:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:20:44,115:INFO:autoreload.py:/home/muzamir/Desktop/portfolio/bugtracker/bugtracker/settings.py changed, reloading.
+2020-02-17 13:20:44,996:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:21:51,723:INFO:autoreload.py:/home/muzamir/Desktop/portfolio/bugtracker/bugtracker/settings.py changed, reloading.
+2020-02-17 13:21:52,728:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:22:10,716:INFO:autoreload.py:/home/muzamir/Desktop/portfolio/bugtracker/bugtracker/settings.py changed, reloading.
+2020-02-17 13:22:11,814:DEBUG:index.py:Index - LogIn Success
+2020-02-17 13:23:03,024:DEBUG:index.py:Index - LogIn Success

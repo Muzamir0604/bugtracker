@@ -1,0 +1,18 @@
+.bug-table td.fit,
+.bug-table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+.bug-table{
+  width:100%;
+  padding-right: 0;
+}
+.h3{
+  font-size: 22px;
+}
+.padding{
+  padding-top: 2rem;
+}
+.foto:hover {
+    transform: scale(1.5);
+}
